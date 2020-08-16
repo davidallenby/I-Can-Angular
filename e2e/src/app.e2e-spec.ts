@@ -8,9 +8,13 @@ describe('workspace-project App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it('should have header logo text', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('agl-developer-test app is running!');
+    expect(page.getLogoText()).toEqual('AGL Dev Test');
+  });
+
+  it('should have two lists', () => {
+    expect(page.getLists().count()).toEqual(2);
   });
 
   afterEach(async () => {

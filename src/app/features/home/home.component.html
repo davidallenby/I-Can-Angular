@@ -1,14 +1,12 @@
 <div>
-  <h1 class="mb-3">Welcome to PetList! 
+  <h1 class="mb-3">AGL Developer Test! 
     <span role="img" aria-label="dog face emoji">🐶</span>
   </h1>
-  <p>
-    This is my submission for the AGL developer test. You will noticed that I
-    have gone <em>slightly</em> overboard with engineering a solution.<br/>(That's just because I wanted to show all the awesome things I can do!)
+  <p class="mb-5">
+    This is my submission for the AGL developer test.
   </p>
-  <p class="mb-5">Throughout this application I will explain in comments, content, and code. How, and why I have achieved the end goal.</p>
 
-  <h2>Introduction</h2>
+  <h2>The challenge</h2>
   <p>The developer test was as follows:</p>
   <blockquote class="mb-4">
     A json web service has been set up at the url: 
@@ -17,15 +15,15 @@
     </a>
     <br>
     You need to write some code to consume the json and output a list of all the cats in alphabetical order under a heading of the gender of their owner.
-    <span class="quote-author">
-      - Hiring manager, AGL
-    </span>
+    <span class="quote-author">- Hiring manager, AGL</span>
   </blockquote>
-  <p>I have completed this task below. However, I have built some extra bells and whistles on other pages. Please navigate throughout the application and let me know of any areas for improvement</p>
-  <p>Thanks for taking the time to consider my application, I hope to hear from you soon!</p>
+  <h2>The result</h2>
+  <p>I have completed this task below. Thanks for taking the time to consider my application, I hope to hear from you soon!</p>
+  <ng-container *ngIf="(owners$ | async)">
+    <app-list *ngFor="let gender of owners$ | async"
+      [items]="gender.items"
+      [title]="gender.title"
+    ></app-list>
+  </ng-container>
 
-  <app-list *ngFor="let gender of catsByOwnerGender"
-    [items]="gender.items"
-    [title]="gender.title"
-  ></app-list>
 </div>

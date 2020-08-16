@@ -7,7 +7,6 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class OwnerService {
-  private owners: Owner[];
 
   constructor(private httpClient: HttpClient) {}
 
