@@ -8,7 +8,7 @@ The code included in this repository is my submission for the coding challenge s
 
 * [The original challenge](#original-challenge)
 * [My submission](#my-submission)
-* [Installation & Set up](#installation-&-setup)
+* [Installation & Set up](#installation-and-setup)
   
 
 ## Original challenge
@@ -43,6 +43,6 @@ I have implemented the following best practices:
 #### Angular best practices
 .....
 
-## Installation & Setup
+## Installation and setup
 
 testing
