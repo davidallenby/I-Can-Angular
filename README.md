@@ -11,7 +11,7 @@ The code included in this repository is my submission for the coding challenge s
 * Installation & Set up
   
 
-## Original challenge {#original-challenge}
+## Original challenge
 A json web service has been set up at [the following url](http://agl-developer-test.azurewebsites.net/people.json)
 You need to write some code to consume the json and output a list of all the cats in alphabetical order under a heading of the gender of their owner.
 You can write it in any language you like. You can use any libraries/frameworks/SDKs you choose.
@@ -25,7 +25,7 @@ __Female__
 * Gizmo
 * Jasper
 
-## My submission {#my-submission}
+## My submission
 For my submission I have completed the required task, but I have also added some extra details to showcase my skillset. I have included the following 3rd party libraries to assist in this work:
 * [Bootstrap](https://getbootstrap.com/)
 
