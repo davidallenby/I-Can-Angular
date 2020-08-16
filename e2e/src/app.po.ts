@@ -1,11 +1,15 @@
-import { browser, by, element } from 'protractor';
+import { browser, by, element, ElementArrayFinder } from 'protractor';
 
 export class AppPage {
   navigateTo(): Promise<unknown> {
     return browser.get(browser.baseUrl) as Promise<unknown>;
   }
 
-  getTitleText(): Promise<string> {
-    return element(by.css('app-root .content span')).getText() as Promise<string>;
+  getLogoText(): Promise<string> {
+    return element(by.id('logo')).getText() as Promise<string>;
+  }
+
+  getLists(): ElementArrayFinder {
+    return element.all(by.css('app-root app-list'));
   }
 }
