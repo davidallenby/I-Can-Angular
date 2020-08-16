@@ -1,0 +1,10 @@
+// The following CSS enables us to create a sticky footer
+html,body {
+  height: 100%;
+}
+
+app-root {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}

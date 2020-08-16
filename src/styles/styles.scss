@@ -1,0 +1,28 @@
+// We import our custom variables first, so they overwrite the bootstrap default
+// DA - 15/08/20
+@import "./variables";
+
+// I have opted to import individual bootstrap modules in order to keep the
+// compiled size to a minimum. DA - 15/08/20
+
+// Required files...
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+// Additional
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/type";
+@import "~bootstrap/scss/grid";
+
+@import "~bootstrap/scss/utilities/spacing";
+@import "~bootstrap/scss/utilities/flex";
+@import "~bootstrap/scss/utilities/background";
+@import "~bootstrap/scss/utilities/display";
+@import "~bootstrap/scss/utilities/sizing";
+@import "~bootstrap/scss/utilities/text";
+
+
+// My custom SCSS
+@import "./layout";
+@import "./typography";
