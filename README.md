@@ -8,11 +8,11 @@ The code included in this repository is my submission for the coding challenge s
 
 * [The original challenge](#original-challenge)
 * [My submission](#my-submission)
-* Installation & Set up
+* [Installation & Set up](#installation-&-setup)
   
 
 ## Original challenge
-A json web service has been set up at [the following url](http://agl-developer-test.azurewebsites.net/people.json)
+A json web service has been set up at [the following url](http://agl-developer-test.azurewebsites.net/people.json) 
 You need to write some code to consume the json and output a list of all the cats in alphabetical order under a heading of the gender of their owner.
 You can write it in any language you like. You can use any libraries/frameworks/SDKs you choose.
 Example:
@@ -41,6 +41,8 @@ I have implemented the following best practices:
 * Limit line length to 80 characters. (This is a personal preference of mine. It allows me to have the terminal open on one half of the monitor, with VS Code on the other half.)
 
 #### Angular best practices
+.....
 
+## Installation & Setup
 
-
+testing
