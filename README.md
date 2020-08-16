@@ -9,7 +9,7 @@ The code included in this repository is my submission for the coding challenge s
 * [The original challenge](#original-challenge)
 * [My submission](#my-submission)
 * [Installation and setup](#installation-and-setup)
-  
+* [Testing](#testing)
 
 ## Original challenge
 A json web service has been set up at [the following url](http://agl-developer-test.azurewebsites.net/people.json) 
@@ -26,28 +26,20 @@ __Female__
 * Jasper
 
 ## My submission
-For my submission I have completed the required task, but I have also added some extra details to showcase my skillset. I have included the following 3rd party libraries to assist in this work:
-* [Bootstrap](https://getbootstrap.com/)
-
-### What I did
 I have implemented the following best practices:
 
-#### Coding style
+__Coding style__
 * Code should not exceed around 30 lines per function. (KISS - Keep it simple, stupid!)
 * If the components/classes are hundred and hundreds of lines of code, we should separate them in to separate files. I prefer to use composition over inheritance. (Why, you ask? It is easier to change in the future. Explained in better detail [here](https://www.youtube.com/watch?v=wfMtDGfHWpA))
 * [Don't repeat yourself (DRY)](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)
 * [Single responsibility principle](https://en.wikipedia.org/wiki/Single-responsibility_principle)
 * Comments should explain WHY code is there, and WHAT it is doing.
-* Limit line length to 80 characters. (This is a personal preference of mine. It allows me to have the terminal open on one half of the monitor, with VS Code on the other half.)
+* Limit line length to 80 characters. (This is a personal preference of mine. It allows me to have the terminal open on one half of the monitor, with VS Code on the other half. It also makes it easier to read.)
+* Use `const` when the variable won't change, `let` when it does.
 
-#### App Structure
-You will notice that I have separated my application in to three sections: Core, Features, and Shared.
-
-___Core__
-This is where I keep any site-wide singleton services, or single instance components.
-
-__Features__
-This is the different features that make up the application. I have stored the homepage here. 
+__Angular best practices__
+* Use reusable components (e.g [ListComponent](https://github.com/davidallenby/agl-developer-test/tree/code-cleanup/src/app/shared/components/list))
+* Lazy loading routes (reduces the size of the application, the initial load time, and improve the application boot time by not loading the unused modules.)
 
 ## Installation and setup
 
@@ -61,4 +53,8 @@ This is the different features that make up the application. I have stored the h
 * Go to the directory: `cd agl-developer-test`
 * Install dependencies: `npm install`
 
-### Dev mode
+## Testing
+Unfortunately I didn't get enough time to investigate writing more in-depth automated tests. You can use the following commands to run tests:
+* Unit tests `ng test`
+* e2e tests `ng e2e`
+* Tinker in dev mode `ng serve`
