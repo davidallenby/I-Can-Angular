@@ -1,4 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {
+  Component, OnInit, Input, ChangeDetectionStrategy
+} from '@angular/core';
 
 /**
  * This list component is a reusable component. We can define the styles here
@@ -11,7 +13,8 @@ import { Component, OnInit, Input } from '@angular/core';
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.scss']
+  styleUrls: ['./list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ListComponent implements OnInit {
   @Input() title: string;

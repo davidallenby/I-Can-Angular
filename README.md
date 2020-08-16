@@ -40,6 +40,15 @@ __Coding style__
 __Angular best practices__
 * Use reusable components (e.g [ListComponent](https://github.com/davidallenby/agl-developer-test/tree/code-cleanup/src/app/shared/components/list))
 * Lazy loading routes (reduces the size of the application, the initial load time, and improve the application boot time by not loading the unused modules.)
+* Modular design: Apps should be structured with 1 x Core Module, 1 x Shared Module, and many Feature Modules
+  - Core Module: This will be where any singleton services or site-wide components will be kept
+  - Shared Module: This will be where any shared components/pipes/services will, but not technically used *everywhere*
+  - Feature Module: This will be where any features that make up the application will live. They will be large sub-sections of the app that contain their own components, routes, pages, services etc.
+* Smart & Dumb components:
+  - Smart components: These will contain business logic in their respective services. They will pass data down to dumb components, and react to events coming from dumb components.
+  - Dumb components: These are presentational only and will be used to display data. We will delegate user interaction up to smart components via events.
+* "On push" Change Detection Strategy - This will improve performance of the application, as it will only update components when necessary.
+* Import aliases - Shortened aliases for Core, Features, and Shared modules.
 
 ## Installation and setup
 
@@ -52,9 +61,9 @@ __Angular best practices__
 * Clone the repo to your local: `git clone https://github.com/davidallenby/agl-developer-test.git`
 * Go to the directory: `cd agl-developer-test`
 * Install dependencies: `npm install`
+* To run in dev mode: `ng serve1`
 
 ## Testing
 Unfortunately I didn't get enough time to investigate writing more in-depth automated tests. You can use the following commands to run tests:
 * Unit tests `ng test`
 * e2e tests `ng e2e`
-* Tinker in dev mode `ng serve`
