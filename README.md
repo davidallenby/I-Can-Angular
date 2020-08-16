@@ -61,7 +61,7 @@ __Angular best practices__
 * Clone the repo to your local: `git clone https://github.com/davidallenby/agl-developer-test.git`
 * Go to the directory: `cd agl-developer-test`
 * Install dependencies: `npm install`
-* To run in dev mode: `ng serve1`
+* To run in dev mode: `ng serve`
 
 ## Testing
 Unfortunately I didn't get enough time to investigate writing more in-depth automated tests. You can use the following commands to run tests:
