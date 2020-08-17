@@ -17,6 +17,7 @@ You need to write some code to consume the json and output a list of all the cat
 You can write it in any language you like. You can use any libraries/frameworks/SDKs you choose.
 
 Example:
+
 __Male__
 * Angel
 * Molly
@@ -42,8 +43,8 @@ __Angular best practices__
 * Use reusable components (e.g [ListComponent](https://github.com/davidallenby/agl-developer-test/tree/code-cleanup/src/app/shared/components/list))
 * Lazy loading routes (reduces the size of the application, the initial load time, and improve the application boot time by not loading the unused modules.)
 * Modular design: Apps should be structured with 1 x Core Module, 1 x Shared Module, and many Feature Modules
-  - Core Module: This will be where any singleton services or site-wide components will be kept
-  - Shared Module: This will be where any shared components/pipes/services will, but not technically used *everywhere*
+  - Core Module: This will be where any singleton services or site-wide components will be kept (E.g. header, footer)
+  - Shared Module: This will be where any shared components/pipes/services will live. They will be used throughout the app, but not used *everywhere* on *every page*
   - Feature Module: This will be where any features that make up the application will live. They will be large sub-sections of the app that contain their own components, routes, pages, services etc.
 * Smart & Dumb components:
   - Smart components: These will contain business logic in their respective services. They will pass data down to dumb components, and react to events coming from dumb components.
