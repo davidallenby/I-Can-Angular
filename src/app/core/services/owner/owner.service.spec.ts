@@ -9,7 +9,7 @@ describe('OwnerService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [OwnerService]
+      providers: [OwnerService, HttpClientTestingModule]
     });
     service = TestBed.inject(OwnerService);
   });

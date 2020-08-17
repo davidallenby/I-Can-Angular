@@ -14,7 +14,6 @@ import { HomeService } from './services/home.service';
 })
 export class HomeComponent implements OnInit, OnDestroy {
   owners$: Observable<IListData[]>;
-  catsByOwnerGender: IListData[] = [];
 
   constructor(private homeSrv: HomeService) { }
 
