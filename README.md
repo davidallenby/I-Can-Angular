@@ -15,6 +15,7 @@ The code included in this repository is my submission for the coding challenge s
 A json web service has been set up at [the following url](http://agl-developer-test.azurewebsites.net/people.json) 
 You need to write some code to consume the json and output a list of all the cats in alphabetical order under a heading of the gender of their owner.
 You can write it in any language you like. You can use any libraries/frameworks/SDKs you choose.
+
 Example:
 __Male__
 * Angel
@@ -64,6 +65,5 @@ __Angular best practices__
 * To run in dev mode: `ng serve`
 
 ## Testing
-Unfortunately I didn't get enough time to investigate writing more in-depth automated tests. You can use the following commands to run tests:
 * Unit tests `ng test`
 * e2e tests `ng e2e`

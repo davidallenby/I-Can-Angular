@@ -90,7 +90,7 @@ describe('HomeComponent', () => {
     const compiled = fixture.elementRef.nativeElement;
     const list = compiled.querySelectorAll('app-list');
     list.forEach(element => {
-      console.log(element.querySelector('ul li'))
+      console.log(element.querySelector('ul li'));
       expect(element.querySelector('ul li').innerHTML).toBe('Garfield');
     });
   });

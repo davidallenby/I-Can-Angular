@@ -17,6 +17,19 @@ describe('workspace-project App', () => {
     expect(page.getLists().count()).toEqual(2);
   });
 
+  it('should have a list titled "Male" and a list titled "Female"', () => {
+    expect(page.getListTitle(0)).toBe('Male');
+    expect(page.getListTitle(1)).toBe('Female');
+  });
+
+  it('List 1 should be sorted alphabetically', () => {
+    expect(page.isListSorted(0)).toBeTruthy();
+  });
+
+  it('List 2 should be sorted alphabetically', () => {
+    expect(page.isListSorted(1)).toBeTruthy();
+  });
+
   afterEach(async () => {
     // Assert that there are no errors emitted from the browser
     const logs = await browser.manage().logs().get(logging.Type.BROWSER);
