@@ -1,33 +1,14 @@
-# AGL developer test!
+# I Can Angular
 
 ## Introduction
 
-The code included in this repository is my submission for the coding challenge set by AGL. You can read through information around what the challenge was, and how I have completed it. However, if you just want to get right to it, jump to the "[Installation and setup](#installation-and-setup)" section.
+The purpose of this repo is to demonstrate some Angular best practices. There's also some other cool stuff included.
 
 ## Contents
 
-* [The original challenge](#original-challenge)
-* [My submission](#my-submission)
-* [Installation and setup](#installation-and-setup)
-* [Testing](#testing)
+* [Best practices](#best-practices)
 
-## Original challenge
-A json web service has been set up at [the following url](http://i-can-angular.azurewebsites.net/people.json) 
-You need to write some code to consume the json and output a list of all the cats in alphabetical order under a heading of the gender of their owner.
-You can write it in any language you like. You can use any libraries/frameworks/SDKs you choose.
-
-Example:
-
-__Male__
-* Angel
-* Molly
-* Tigger
-
-__Female__
-* Gizmo
-* Jasper
-
-## My submission
+## Best practices
 I have implemented the following best practices:
 
 __Coding style__
