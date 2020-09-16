@@ -11,6 +11,6 @@ export class OwnerService {
   constructor(private httpClient: HttpClient) {}
 
   getOwners(): Observable<Owner[]> {
-    return this.httpClient.get<Owner[]>('http://agl-developer-test.azurewebsites.net/people.json');
+    return this.httpClient.get<Owner[]>('http://i-can-angular.azurewebsites.net/people.json');
   }
 }

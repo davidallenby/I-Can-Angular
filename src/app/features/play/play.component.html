@@ -1,0 +1,14 @@
+<div *ngIf="preparing">
+  {{countdown}}
+</div>
+
+<div *ngIf="!preparing">
+  <div>
+    Your score: {{score}}
+  </div>
+  <div class="d-flex flex-column h-100 flex-grow-1 game-wrapper">
+    <div class="hole">
+      <app-mole speed="4" (clickHandler)="onClick($event)"></app-mole>
+    </div>
+  </div>
+</div>

@@ -55,7 +55,6 @@ describe('HomeComponent', () => {
     }).compileComponents();
 
     homeSrv = TestBed.inject(HomeService);
-    spyOn(homeSrv, 'getOwners').and.returnValue(of(mockOwners));
   }));
 
   beforeEach(() => {
@@ -68,31 +67,5 @@ describe('HomeComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should have a title of "AGL Developer Test!"', () => {
-    const titleContent = fixture.nativeElement.querySelector('h1').textContent;
-    expect(titleContent).toBe('AGL Developer Test! 🐶');
-  });
-
-  it('should have two lists', () => {
-    const compiled = fixture.elementRef.nativeElement;
-    const lists = compiled.querySelectorAll('app-list');
-    expect(lists.length).toBe(2);
-  });
-
-  it('should have a list titled "Male" and a list titled "Female"', () => {
-    const compiled = fixture.elementRef.nativeElement;
-    const list = compiled.querySelectorAll('app-list');
-    expect(list[0].querySelector('p').textContent).toBe('Male');
-    expect(list[1].querySelector('p').textContent).toBe('Female');
-  });
-
-  it('each list should have an item with the text "Garfield"', () => {
-    const compiled = fixture.elementRef.nativeElement;
-    const list = compiled.querySelectorAll('app-list');
-    list.forEach(element => {
-      console.log(element.querySelector('ul li'));
-      expect(element.querySelector('ul li').innerHTML).toBe('Garfield');
-    });
-  });
 
 });

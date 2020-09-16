@@ -12,7 +12,7 @@ The code included in this repository is my submission for the coding challenge s
 * [Testing](#testing)
 
 ## Original challenge
-A json web service has been set up at [the following url](http://agl-developer-test.azurewebsites.net/people.json) 
+A json web service has been set up at [the following url](http://i-can-angular.azurewebsites.net/people.json) 
 You need to write some code to consume the json and output a list of all the cats in alphabetical order under a heading of the gender of their owner.
 You can write it in any language you like. You can use any libraries/frameworks/SDKs you choose.
 
@@ -40,7 +40,7 @@ __Coding style__
 * Use `const` when the variable won't change, `let` when it does.
 
 __Angular best practices__
-* Use reusable components (e.g [ListComponent](https://github.com/davidallenby/agl-developer-test/tree/code-cleanup/src/app/shared/components/list))
+* Use reusable components (e.g [ListComponent](https://github.com/davidallenby/i-can-angular/tree/code-cleanup/src/app/shared/components/list))
 * Lazy loading routes (reduces the size of the application, the initial load time, and improve the application boot time by not loading the unused modules.)
 * Modular design: Apps should be structured with 1 x Core Module, 1 x Shared Module, and many Feature Modules
   - Core Module: This will be where any singleton services or site-wide components will be kept (E.g. header, footer)
@@ -60,8 +60,8 @@ __Angular best practices__
 * This project was built with Angular CLI `npm i -g @angular/cli`
 
 ### Install
-* Clone the repo to your local: `git clone https://github.com/davidallenby/agl-developer-test.git`
-* Go to the directory: `cd agl-developer-test`
+* Clone the repo to your local: `git clone https://github.com/davidallenby/i-can-angular.git`
+* Go to the directory: `cd i-can-angular`
 * Install dependencies: `npm install`
 * To run in dev mode: `ng serve`
 

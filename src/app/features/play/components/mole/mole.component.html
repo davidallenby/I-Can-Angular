@@ -1,0 +1,9 @@
+<div 
+class="mole"
+[ngStyle]="{
+  'animation-duration': animationSpeed
+}"
+[ngClass]="{
+  'animate': !clicked
+}"
+(click)="onClick($event)"></div>
