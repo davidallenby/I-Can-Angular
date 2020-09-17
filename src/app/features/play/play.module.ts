@@ -4,6 +4,11 @@ import { RouterModule } from '@angular/router';
 import { PlayComponent } from './play.component';
 
 import { MoleComponent } from './components/mole/mole.component';
+import {
+  GameDetailsComponent
+} from './components/game-details/game-details.component';
+
+import { PlayService } from './services/play.service';
 
 @NgModule({
   imports: [
@@ -17,13 +22,16 @@ import { MoleComponent } from './components/mole/mole.component';
   ],
   declarations: [
     PlayComponent,
-    MoleComponent
+    MoleComponent,
+    GameDetailsComponent
   ],
   exports: [
     PlayComponent,
-    MoleComponent
+    MoleComponent, 
+    GameDetailsComponent
   ],
   providers: [
+    PlayService
   ]
 })
 export class PlayModule {}

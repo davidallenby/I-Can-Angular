@@ -7,6 +7,10 @@
   bottom: -100%;
   background-color: yellow;
 
+  &:hover {
+    cursor: pointer;
+  }
+
   &.animate {
     animation-name: moveUpDown;
     animation-timing-function: linear;

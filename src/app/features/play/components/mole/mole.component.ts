@@ -2,6 +2,7 @@ import {
   Component, OnInit, OnDestroy, ChangeDetectionStrategy, ChangeDetectorRef,
   ViewEncapsulation, Input, OnChanges, SimpleChanges, EventEmitter, Output
 } from '@angular/core';
+import { ILevelSchema } from '../../interfaces';
 
 @Component({
   selector: 'app-mole',
@@ -12,8 +13,9 @@ import {
 })
 export class MoleComponent implements OnInit, OnDestroy, OnChanges {
   @Output() clickHandler: EventEmitter<any> = new EventEmitter();
-  @Input() speed = 1;
-  animationSpeed = `${this.speed}s`;
+  @Input() speed: number;
+  @Input() active: boolean;
+  animateSpeed: string;
   clicked = false;
 
   constructor(private cdr: ChangeDetectorRef) { }
@@ -28,7 +30,8 @@ export class MoleComponent implements OnInit, OnDestroy, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.speed) {
-      this.animationSpeed = `${this.speed}s`;
+      const sec = changes.speed.currentValue;
+      this.animateSpeed = (sec) ? `${sec}s` : '0';
     }
   }
 

@@ -1,14 +1,37 @@
-<div *ngIf="preparing">
-  {{countdown}}
-</div>
-
-<div *ngIf="!preparing">
-  <div>
-    Your score: {{score}}
-  </div>
-  <div class="d-flex flex-column h-100 flex-grow-1 game-wrapper">
-    <div class="hole">
-      <app-mole speed="4" (clickHandler)="onClick($event)"></app-mole>
+<div class="game-wrapper 
+position-relative">
+  <div class="text-center level-info d-flex flex-column h-100 flex-grow-1 p-5 position-absolute align-items-center h-100 w-100 justify-content-center" *ngIf="preparingLevel">
+    <p class="display-2">{{userMessage}}</p>
+    <div class="d-flex align-items-center justify-content-center">
+      <button type="button" class="btn btn-secondary mr-3"
+      (click)="exitGame($event)">
+        <span>End game</span>
+      </button>
+      <button type="button" *ngIf="gameOver" class="btn btn-primary"
+      (click)="restartGame($event)">
+        <span>Restart game</span>
+      </button>
+      <button type="button" *ngIf="!gameOver" class="btn btn-primary"
+      (click)="nextLevel($event)">
+        <span>Next level</span>
+      </button>
     </div>
+
+  </div>
+
+  <app-game-details [score]="score" [time]="timeLeft"></app-game-details>
+
+  <div class="row mx-0">
+    <div class="col-6 col-md-4 mb-4" *ngFor="let mole of moles">
+      <div class="hole">
+        <app-mole 
+          [active]="gameInProgress"
+          [speed]="mole.speed"
+          (clickHandler)="onClick($event)"
+        ></app-mole>
+      </div>
+
+    </div>
+
   </div>
 </div>
