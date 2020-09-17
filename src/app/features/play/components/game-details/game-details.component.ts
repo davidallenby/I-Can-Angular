@@ -13,7 +13,6 @@ export class GameDetailsComponent implements OnInit, OnDestroy, OnChanges {
   @Input() score = 0;
   @Input() time = 0;
   @Input() level = 0;
-  // @Output() timeEndHandler: EventEmitter<any> = new EventEmitter();
 
   constructor(private cdr: ChangeDetectorRef) { }
 
@@ -26,7 +25,7 @@ export class GameDetailsComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
+
   }
 
 }

@@ -35,10 +35,10 @@ export class PlayService {
    * @returns
    * @memberof PlayService
    */
-  private getRandomInRange(minimum: number, maxiumum: number): number {
+  private getRandomInRange(minimum: number, maximum: number): number {
     const min = Math.ceil(minimum);
-    const max = Math.floor(maxiumum);
-    return Math.floor(Math.random() * (max - min + 1) / 10) + min;
+    const max = Math.floor(maximum);
+    return Number((Math.random() * (max - min) + min * 1).toFixed(1));
   }
 
 }

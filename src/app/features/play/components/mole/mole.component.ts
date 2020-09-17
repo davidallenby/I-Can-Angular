@@ -14,8 +14,10 @@ import { ILevelSchema } from '../../interfaces';
 export class MoleComponent implements OnInit, OnDestroy, OnChanges {
   @Output() clickHandler: EventEmitter<any> = new EventEmitter();
   @Input() speed: number;
+  @Input() delay: number;
   @Input() active: boolean;
   animateSpeed: string;
+  delaySpeed: string;
   clicked = false;
 
   constructor(private cdr: ChangeDetectorRef) { }
@@ -29,7 +31,7 @@ export class MoleComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes.speed) {
+    if (changes.speed || changes.delay) {
       const sec = changes.speed.currentValue;
       this.animateSpeed = (sec) ? `${sec}s` : '0';
     }
