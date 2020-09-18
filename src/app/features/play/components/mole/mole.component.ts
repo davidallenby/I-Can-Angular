@@ -53,10 +53,11 @@ AfterViewInit {
   }
 
   startGame(): void {
-    this.mole.nativeElement.onanimationiteration = () => {
-      console.log("HERE")
+    this.mole.nativeElement.addEventListener('animationiteration', () => {
+      this.mole.nativeElement.style.webkitAnimationPlayState = 'paused';
       this.mole.nativeElement.style.animationDuration = this.speed + 's';
-    };
+      this.mole.nativeElement.style.webkitAnimationPlayState = 'running';
+    });
     this.calculateSpeed();
   }
 
@@ -65,10 +66,8 @@ AfterViewInit {
       if (!this.time || !this.active) {
         clearInterval(timer);
       }
-
-
       this.speed = this.playSrv.generateNewSpeed(this.speed);
-    }, 3000);
+    }, 5000);
   }
 
   /**
