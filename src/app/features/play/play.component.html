@@ -2,18 +2,14 @@
 position-relative">
   <div class="text-center level-info d-flex flex-column h-100 flex-grow-1 p-5 position-absolute align-items-center h-100 w-100 justify-content-center" *ngIf="preparingLevel">
     <p class="display-2">{{userMessage}}</p>
-    <div class="d-flex align-items-center justify-content-center">
+    <div class="d-flex align-items-center justify-content-center"  *ngIf="gameOver">
       <button type="button" class="btn btn-secondary mr-3"
       (click)="exitGame($event)">
         <span>End game</span>
       </button>
-      <button type="button" *ngIf="gameOver" class="btn btn-primary"
+      <button type="button" class="btn btn-primary"
       (click)="restartGame($event)">
         <span>Restart game</span>
-      </button>
-      <button type="button" *ngIf="!gameOver" class="btn btn-primary"
-      (click)="nextLevel($event)">
-        <span>Next level</span>
       </button>
     </div>
 
@@ -25,8 +21,8 @@ position-relative">
     <div class="col-6 col-md-4 mb-4" *ngFor="let mole of moles">
       <div class="hole">
         <app-mole 
+          [time]="timeLeft"
           [active]="gameInProgress"
-          [speed]="mole.speed"
           (clickHandler)="onClick($event)"
         ></app-mole>
       </div>

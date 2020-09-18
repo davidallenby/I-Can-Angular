@@ -2,7 +2,6 @@ import {
   Component, OnInit, OnDestroy, ChangeDetectionStrategy, ChangeDetectorRef, ViewEncapsulation
 } from '@angular/core';
 import { Router } from '@angular/router';
-import { LEVEL_SCHEMA } from './constants';
 import { PlayService } from './services/play.service';
 
 @Component({
@@ -22,7 +21,6 @@ export class PlayComponent implements OnInit, OnDestroy {
   moles = [];
   timeLeft = 1;
   highScore = 0;
-  currentLevel = LEVEL_SCHEMA[0];
   gameOver = false;
 
   constructor(
@@ -90,10 +88,8 @@ export class PlayComponent implements OnInit, OnDestroy {
    * @memberof PlayComponent
    */
   private async initLevel(level: number): Promise<void> {
-    this.currentLevel = LEVEL_SCHEMA[level];
-    this.timeLeft = this.currentLevel.time;
-    console.log('Level ' + (level + 1) + ': ', );
-    this.moles = this.playSrv.generateMoles(this.currentLevel);
+    this.timeLeft = 60;
+    this.moles = this.playSrv.generateMoles();
     // await this.initCountDown(level);
     console.log('START!');
     // Start the level
@@ -107,38 +103,13 @@ export class PlayComponent implements OnInit, OnDestroy {
     const timer = setInterval(() => {
       this.timeLeft--;
       if (!this.timeLeft) {
-        this.endLevel();
+        this.endGame();
         clearInterval(timer);
       }
       this.cdr.detectChanges();
     }, 1000);
   }
 
-  private endLevel(): void {
-    this.preparingLevel = true;
-    this.gameInProgress = false;
-    const progress = this.getProgress();
-    // If the user can't progress, end the game...
-    if (!progress) {
-      this.endGame();
-    } else {
-      this.level++;
-    }
-
-  }
-
-  /**
-   * Check if the user's score is greater than or equal to the minimum score
-   * required for progression on this level.
-   *
-   * @private
-   * @returns {boolean}
-   * @memberof PlayComponent
-   */
-  private getProgress(): boolean {
-    const minScore = this.currentLevel.minScore;
-    return (this.score >= minScore);
-  }
 
   private endGame(): void {
     this.stopGame();
@@ -156,9 +127,5 @@ export class PlayComponent implements OnInit, OnDestroy {
 
   restartGame(): void {
     this.initLevel(0);
-  }
-
-  nextLevel(): void {
-    this.initLevel(this.level++);
   }
 }

@@ -27,7 +27,7 @@ import { PlayService } from './services/play.service';
   ],
   exports: [
     PlayComponent,
-    MoleComponent, 
+    MoleComponent,
     GameDetailsComponent
   ],
   providers: [
