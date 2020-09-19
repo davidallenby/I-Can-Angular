@@ -1,7 +1,6 @@
 import {
   Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef
 } from '@angular/core';
-import { Router } from '@angular/router';
 import { IPlayerRecord } from '@features/play/interfaces';
 import { PlayService } from '@features/play/services/play.service';
 
@@ -18,13 +17,11 @@ export class LeaderboardPageComponent implements OnInit {
   constructor(
     private cdr: ChangeDetectorRef,
     private playSrv: PlayService,
-    private router: Router
   ) { }
 
   ngOnInit(): void {
     this.loading = true;
     this.playSrv.getScores().then(res => {
-      console.log(res);
       this.scores = res;
       this.loading = false;
       this.cdr.detectChanges();

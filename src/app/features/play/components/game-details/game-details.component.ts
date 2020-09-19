@@ -19,7 +19,7 @@ export class GameDetailsComponent implements OnInit, OnDestroy, OnChanges {
   @Input() highScore = 0;
   loadingHighScore = true;
   destroy: boolean;
-  time = 0;
+  time = 60;
 
   constructor(
     private playSrv: PlayService,
@@ -61,13 +61,14 @@ export class GameDetailsComponent implements OnInit, OnDestroy, OnChanges {
    * @memberof PlayComponent
    */
   private startCounter(): void {
-    this.time = 10; // Reset the time
+    this.time = 60; // Reset the time
     const timer = setInterval(() => {
       if (!this.pause) {
         this.time--;
         if (!this.time || this.destroy) {
           this.gameOver.emit(true);
           clearInterval(timer);
+          this.time = 60;
         }
         this.timeChange.emit(this.time);
         this.cdr.detectChanges();
