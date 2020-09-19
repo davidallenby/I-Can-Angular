@@ -1,16 +1,20 @@
-<h1>Whac-A-Mole leaderboard</h1>
-<div *ngIf="loading"></div>
-<div *ngIf="!loading">
-  <table class="table">
-    <thead>
-      <th>Name</th>
-      <th>Score</th>
-    </thead>
-    <tbody>
-      <tr *ngFor="let record of scores">
-        <td>{{record.name}}</td>
-        <td>{{record.score}}</td>
-      </tr>
-    </tbody>
-  </table>
+<div class="container">
+  <h1>Whac-A-Mole leaderboard</h1>
+  <div *ngIf="loading">
+    <!-- TODO: Insert loading spinner here-->
+  </div>
+  <div *ngIf="!loading">
+    <table class="table">
+      <thead>
+        <th>Name</th>
+        <th>Score</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let record of scores">
+          <td>{{record.name}}</td>
+          <td>{{record.score}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
