@@ -20,7 +20,6 @@ export class PlayService {
       const mole = {};
       moles.push(mole);
     }
-    console.log(moles);
     return moles;
   }
 
@@ -79,16 +78,35 @@ export class PlayService {
     localStorage.setItem('whacAMoleScores', storeStr);
   }
 
+  /**
+   * Return the player scores from the store
+   *
+   * @returns {IPlayerRecord[]}
+   * @memberof PlayService
+   */
+  getScores(): Promise<IPlayerRecord[]> {
+    return new Promise((resolve, reject) => {
+      // Get the scores from the store
+      const store = localStorage.getItem('whacAMoleScores');
+      // If there's nothing in the store, return an empty array. Otherwise, make
+      // sure the scores are sorted highest to lowest.
+      const results = (!store) ? [] : JSON.parse(store)
+      .sort((a: IPlayerRecord, b: IPlayerRecord) => {
+        return b.score - a.score;
+      });
+      resolve(results);
+    });
+  }
 
-  getHighestScore(): number {
-    const store = localStorage.getItem('whacAMoleScores');
-    if (!store) {
-      return 0;
-    }
-
-    const parsed = JSON.parse(store);
-    console.log(parsed);
-    return parsed[0].score;
+  /**
+   * Get the highest score
+   *
+   * @returns {number}
+   * @memberof PlayService
+   */
+  async getHighestScore(): Promise<number> {
+    const scores = await this.getScores();
+    return scores[0].score;
   }
 
 }

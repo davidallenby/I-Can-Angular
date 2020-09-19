@@ -1,7 +1,6 @@
 import {
   Component, OnDestroy, ChangeDetectionStrategy, Input, OnChanges,
-  SimpleChanges, EventEmitter, Output, ViewChild, ElementRef,
-  AfterViewInit
+  SimpleChanges, EventEmitter, Output, ViewChild, ElementRef, ChangeDetectorRef
 } from '@angular/core';
 import { PlayService } from '@features/play/services/play.service';
 
@@ -11,8 +10,7 @@ import { PlayService } from '@features/play/services/play.service';
   styleUrls: ['./mole.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MoleComponent implements OnDestroy, OnChanges,
-AfterViewInit {
+export class MoleComponent implements OnDestroy, OnChanges {
   @Output() clickHandler: EventEmitter<any> = new EventEmitter();
   @Input() active: boolean; // Determines whether the game has started/ended
   @Input() pause: boolean; // Pause state
@@ -23,17 +21,16 @@ AfterViewInit {
   fastestSpeed = 6.0;
   slowestSpeed = 7.0;
   delay = 0.0;
+  destroy: boolean;
   animationEndFn: () => void;
 
   constructor(
+    private cdr: ChangeDetectorRef,
     private playSrv: PlayService
   ) { }
 
-  ngAfterViewInit(): void {
-    this.startGame();
-  }
-
   ngOnDestroy(): void {
+    this.destroy = true;
     this.removeAnimation();
   }
 
@@ -43,7 +40,6 @@ AfterViewInit {
       const active = changes.active.currentValue;
       // If the game changes to 'active' we want to start the game.
       if (active) {
-        console.log("Game started in child")
         this.startGame();
       } else { // If it is set to inactive, we want to reset.
         this.endGame();
@@ -80,6 +76,7 @@ AfterViewInit {
    */
   private removeAnimation(): void {
     const mole = this.mole.nativeElement;
+    mole.classList.remove('animate');
     if (this.animationEndFn) {
       mole.removeEventListener('animationend', this.animationEndFn);
       this.animationEndFn = null;
@@ -127,16 +124,16 @@ AfterViewInit {
    */
   private initSpeedIncreaseTimer(): void {
     const timer = setInterval(() => {
-      if (!this.time || !this.active) {
+      if (!this.time || !this.active || this.destroy) {
         clearInterval(timer);
       }
-
       // If the game is not paused, increase the speed and generate new settings
       if (!this.pause) {
         this.slowestSpeed--;
         this.fastestSpeed--;
         this.generateNewSettings();
       }
+      this.cdr.detectChanges();
     }, 6000);
   }
 

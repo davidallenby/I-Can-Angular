@@ -1,0 +1,18 @@
+<div class="text-center game-over d-flex flex-column h-100 flex-grow-1 p-5 position-absolute align-items-center h-100 w-100 justify-content-center">
+  <p class="display-2">Game Over</p>
+  <div>
+    <p class="lead mb-1">You scored a total of: <strong>{{score}}</strong>.</p>
+    <p clas="lead mb-1">Enter your name below to add your score to the leaderboard</p>
+    <input #name type="text" maxlength="3" class="enter-name d-block mx-auto" />
+  </div>
+  <div class="my-3">
+    <button type="button" class="btn btn-secondary mr-3"
+    (click)="exitGame($event)">
+      <span>End game</span>
+    </button>
+    <button type="button" class="btn btn-primary"
+    (click)="onRestartClick($event)">
+      <span>Restart game</span>
+    </button>
+  </div>
+</div>

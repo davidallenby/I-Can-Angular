@@ -1,0 +1,10 @@
+<div class="row mx-0">
+  <div class="col-6 col-md-4 mb-4" *ngFor="let mole of moles">
+    <app-mole 
+      [time]="time"
+      [active]="gameInProgress"
+      [pause]="pause"
+      (clickHandler)="onMoleClick($event)"
+    ></app-mole>
+  </div>
+</div>

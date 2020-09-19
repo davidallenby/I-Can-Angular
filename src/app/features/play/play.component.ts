@@ -1,9 +1,6 @@
 import {
-  Component, OnInit, OnDestroy, ChangeDetectionStrategy, ChangeDetectorRef, ViewChild, ElementRef
+  Component, OnInit, OnDestroy, ChangeDetectionStrategy, ChangeDetectorRef
 } from '@angular/core';
-import { Router } from '@angular/router';
-import { IPlayerRecord } from './interfaces';
-import { PlayService } from './services/play.service';
 
 @Component({
   selector: 'app-play',
@@ -12,31 +9,26 @@ import { PlayService } from './services/play.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PlayComponent implements OnInit, OnDestroy {
-  @ViewChild('name', {static: false}) name: ElementRef;
   // TODO: Add types
   userMessage = '';
   preparingLevel = true;
   gameInProgress = false;
   score = 0;
-  moles = [];
-  timeLeft = 1;
+  timeLeft: number;
   gameOver = false;
   pause = false;
-  highScore = 0;
-  nameError: string;
+  loadingHighScore = false;
+  destroy: boolean;
 
-  constructor(
-    private cdr: ChangeDetectorRef,
-    private playSrv: PlayService,
-    private router: Router
-  ) { }
+  constructor(private cdr: ChangeDetectorRef) { }
 
   ngOnInit(): void {
-    this.highScore = this.playSrv.getHighestScore();
     this.initGame();
   }
 
-  ngOnDestroy(): void { }
+  ngOnDestroy(): void {
+    this.destroy = true;
+  }
 
   onClick(e: Event): void {
     this.score++;
@@ -51,19 +43,18 @@ export class PlayComponent implements OnInit, OnDestroy {
    */
   private async initCountDown(): Promise<void> {
     let countdown = 5;
-    await this.delay(1);
     this.userMessage = 'Are you ready?';
     this.cdr.detectChanges();
     await this.delay(1);
     return new Promise(resolve => {
       const timer = setInterval(() => {
         // If the countdown has reached 0, start the game
-        if (!countdown) {
+        if (!countdown || this.destroy) {
           clearInterval(timer);
           resolve();
         }
+        // Update the user message with the current count
         this.userMessage = countdown.toString();
-        console.log(countdown);
         countdown--;
         this.cdr.detectChanges();
       }, 1000);
@@ -90,35 +81,18 @@ export class PlayComponent implements OnInit, OnDestroy {
    * @memberof PlayComponent
    */
   private async initGame(): Promise<void> {
+    // Reset the score, and the clock
     this.score = 0;
-    this.timeLeft = 5;
-    this.moles = this.playSrv.generateMoles();
+    // Set the screen that shows the pre-game countdown
+    this.userMessage = '';
+    this.gameOver = false;
+    this.preparingLevel = true;
+    // Start the pre-game countdown
     await this.initCountDown();
     // Start the level
-    this.gameOver = false;
     this.preparingLevel = false;
     this.gameInProgress = true;
-    console.log("Game started in parent")
-    this.startCounter();
-  }
-
-  /**
-   * Starts the game timer
-   *
-   * @private
-   * @memberof PlayComponent
-   */
-  private startCounter(): void {
-    const timer = setInterval(() => {
-      if (!this.pause) {
-        this.timeLeft--;
-        if (!this.timeLeft) {
-          this.endGame();
-          clearInterval(timer);
-        }
-        this.cdr.detectChanges();
-      }
-    }, 1000);
+    this.cdr.detectChanges();
   }
 
   /**
@@ -127,14 +101,20 @@ export class PlayComponent implements OnInit, OnDestroy {
    * @private
    * @memberof PlayComponent
    */
-  private endGame(): void {
-    this.nameError = '';
+  endGame(e: Event): void {
     this.gameInProgress = false;
     this.gameOver = true;
-    // If the current game score beats the highscore, update it in the view.
-    if (this.score > this.highScore) {
-      this.highScore = this.score;
-    }
+  }
+
+  /**
+   * When the time changes we want to pass that down to the child components.
+   *
+   * @param {number} time
+   * @memberof PlayComponent
+   */
+  onTimeChange(time: number): void {
+    this.timeLeft = time;
+    this.cdr.detectChanges();
   }
 
   /**
@@ -150,41 +130,12 @@ export class PlayComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * Exit the game back to the home page of the app
-   *
-   * @memberof PlayComponent
-   */
-  exitGame(): void {
-    this.router.navigate(['/']);
-  }
-
-  /**
    * Re-initialises the game
    *
    * @memberof PlayComponent
    */
-  async restartGame(): Promise<void> {
-    if (this.score) {
-      if (this.validateName()) {
-        const rec: IPlayerRecord = {
-          score: this.score,
-          name: this.name.nativeElement.value
-        };
-        await this.playSrv.setHighScore(rec);
-        this.initGame();
-        return;
-      }
-    }
+  async restartGame(e: Event): Promise<void> {
+    this.gameOver = false;
     this.initGame();
-    return;
-  }
-
-  validateName(): boolean {
-    const name = this.name.nativeElement.value;
-    if (name.length < 3) {
-      this.nameError = 'Name is not valid. Please set a value of 3 characters';
-      return false;
-    }
-    return true;
   }
 }

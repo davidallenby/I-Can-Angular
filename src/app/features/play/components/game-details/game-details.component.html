@@ -1,9 +1,12 @@
-<div class="p-3 d-flex align-items-start h3">
+<div class="p-3 d-flex align-items-start">
   <div>
     Your score: {{score}}<br/>
     High score: {{highScore}}
   </div>
   <div class="ml-auto text-right">
-    Time left: {{time}}
+    Time left: {{time}}<br/>
+    <a routerLink="/play/leaderboard">
+      View leaderboard
+    </a>
   </div>
 </div>

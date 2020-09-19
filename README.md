@@ -6,7 +6,25 @@ The purpose of this repo is to demonstrate some Angular best practices. There's 
 
 ## Contents
 
+* [Installation and setup](#installation-and-setup)
 * [Best practices](#best-practices)
+
+## Installation and setup
+
+### Prerequisites
+* Ensure you have [Node JS installed](https://nodejs.org/en/download/) (My version is 12.18.0)
+* Ensure you have [NPM installed](https://www.npmjs.com/get-npm) (My version is 6.14.4)
+* This project was built with Angular CLI `npm i -g @angular/cli`
+
+### Install
+* Clone the repo to your local: `git clone https://github.com/davidallenby/i-can-angular.git`
+* Go to the directory: `cd i-can-angular`
+* Install dependencies: `npm install`
+* To run in dev mode: `ng serve`
+
+## Testing
+* Unit tests `ng test`
+* e2e tests `ng e2e`
 
 ## Best practices
 I have implemented the following best practices:
@@ -33,19 +51,3 @@ __Angular best practices__
 * "On push" Change Detection Strategy - This will improve performance of the application, as it will only update components when necessary.
 * Import aliases - Shortened aliases for Core, Features, and Shared modules.
 
-## Installation and setup
-
-### Prerequisites
-* Ensure you have [Node JS installed](https://nodejs.org/en/download/) (My version is 12.18.0)
-* Ensure you have [NPM installed](https://www.npmjs.com/get-npm) (My version is 6.14.4)
-* This project was built with Angular CLI `npm i -g @angular/cli`
-
-### Install
-* Clone the repo to your local: `git clone https://github.com/davidallenby/i-can-angular.git`
-* Go to the directory: `cd i-can-angular`
-* Install dependencies: `npm install`
-* To run in dev mode: `ng serve`
-
-## Testing
-* Unit tests `ng test`
-* e2e tests `ng e2e`

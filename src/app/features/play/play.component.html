@@ -1,44 +1,28 @@
-<div class="game-wrapper 
-position-relative">
+
+<app-game-details 
+  [score]="score"
+  [gameInProgress]="gameInProgress"
+  [pause]="pause"
+  (gameOver)="endGame($event)"
+  (timeChange)="onTimeChange($event)"
+></app-game-details>
+
+<div class="game-wrapper position-relative">
+
   <div class="text-center level-info d-flex flex-column h-100 flex-grow-1 p-5 position-absolute align-items-center h-100 w-100 justify-content-center" *ngIf="preparingLevel">
     <p class="display-2">{{userMessage}}</p>
   </div>
 
-  <div *ngIf="gameOver"
-  class="text-center level-info d-flex flex-column h-100 flex-grow-1 p-5 position-absolute align-items-center h-100 w-100 justify-content-center">
-    <p class="display-2">Game Over</p>
-    <div *ngIf="score">
-      <p class="lead mb-1">You scored a total of: <strong>{{score}}</strong>.</p>
-      <p clas="lead mb-1">Enter your name below to add your score to the leaderboard</p>
-      <input #name type="text" maxlength="3" class="enter-name d-block" />
-      <div *ngIf="nameError" class="text-danger">{{nameError}}</div>
-    </div>
-    <div class="my-3">
-      <button type="button" class="btn btn-secondary mr-3"
-      (click)="exitGame($event)">
-        <span>End game</span>
-      </button>
-      <button type="button" class="btn btn-primary"
-      (click)="restartGame($event)">
-        <span>Restart game</span>
-      </button>
-    </div>
-  </div>
+  <app-game-over
+    *ngIf="gameOver"
+    [score]="score"
+    (restartGame)="restartGame($event)"
+  ></app-game-over>
 
-  <app-game-details
-    [score]="score" [time]="timeLeft" [highScore]="highScore"
-  ></app-game-details>
-
-  <div class="row mx-0">
-    <div class="col-6 col-md-4 mb-4" *ngFor="let mole of moles">
-      <app-mole 
-        [time]="timeLeft"
-        [active]="gameInProgress"
-        [pause]="pause"
-        (clickHandler)="onClick($event)"
-      ></app-mole>
-
-    </div>
-
-  </div>
+  <app-game-board 
+    [time]="timeLeft" 
+    [gameInProgress]="gameInProgress"
+    [pause]="pause"
+    (scoreChange)="onClick($event)"
+  ></app-game-board>
 </div>
