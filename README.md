@@ -23,6 +23,7 @@ The purpose of this repo is to demonstrate some Angular best practices. There's 
 * To run in dev mode: `ng serve`
 
 ## Testing
+This is still a work in progress. However, you can use the following commands:
 * Unit tests `ng test`
 * e2e tests `ng e2e`
 
