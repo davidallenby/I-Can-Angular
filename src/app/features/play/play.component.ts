@@ -1,27 +1,29 @@
 import {
-  Component, OnInit, OnDestroy, ChangeDetectionStrategy, ChangeDetectorRef, ViewEncapsulation
+  Component, OnInit, OnDestroy, ChangeDetectionStrategy, ChangeDetectorRef, ViewChild, ElementRef
 } from '@angular/core';
 import { Router } from '@angular/router';
+import { IPlayerRecord } from './interfaces';
 import { PlayService } from './services/play.service';
 
 @Component({
   selector: 'app-play',
   templateUrl: './play.component.html',
   styleUrls: ['./play.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PlayComponent implements OnInit, OnDestroy {
+  @ViewChild('name', {static: false}) name: ElementRef;
   // TODO: Add types
   userMessage = '';
   preparingLevel = true;
   gameInProgress = false;
   score = 0;
-  level = 0;
   moles = [];
   timeLeft = 1;
-  highScore = 0;
   gameOver = false;
+  pause = false;
+  highScore = 0;
+  nameError: string;
 
   constructor(
     private cdr: ChangeDetectorRef,
@@ -30,7 +32,8 @@ export class PlayComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.initLevel(this.level);
+    this.highScore = this.playSrv.getHighestScore();
+    this.initGame();
   }
 
   ngOnDestroy(): void { }
@@ -46,9 +49,8 @@ export class PlayComponent implements OnInit, OnDestroy {
    * @param {number} level
    * @memberof PlayComponent
    */
-  private async initCountDown(level: number): Promise<void> {
+  private async initCountDown(): Promise<void> {
     let countdown = 5;
-    this.userMessage = `Level ${level + 1}`;
     await this.delay(1);
     this.userMessage = 'Are you ready?';
     this.cdr.detectChanges();
@@ -87,45 +89,102 @@ export class PlayComponent implements OnInit, OnDestroy {
    * @param {number} level
    * @memberof PlayComponent
    */
-  private async initLevel(level: number): Promise<void> {
-    this.timeLeft = 60;
+  private async initGame(): Promise<void> {
+    this.score = 0;
+    this.timeLeft = 5;
     this.moles = this.playSrv.generateMoles();
-    // await this.initCountDown(level);
-    console.log('START!');
+    await this.initCountDown();
     // Start the level
     this.gameOver = false;
     this.preparingLevel = false;
     this.gameInProgress = true;
+    console.log("Game started in parent")
     this.startCounter();
   }
 
+  /**
+   * Starts the game timer
+   *
+   * @private
+   * @memberof PlayComponent
+   */
   private startCounter(): void {
     const timer = setInterval(() => {
-      this.timeLeft--;
-      if (!this.timeLeft) {
-        this.endGame();
-        clearInterval(timer);
+      if (!this.pause) {
+        this.timeLeft--;
+        if (!this.timeLeft) {
+          this.endGame();
+          clearInterval(timer);
+        }
+        this.cdr.detectChanges();
       }
-      this.cdr.detectChanges();
     }, 1000);
   }
 
-
+  /**
+   * Ends the game
+   *
+   * @private
+   * @memberof PlayComponent
+   */
   private endGame(): void {
-    this.stopGame();
-    this.gameOver = true;
-  }
-
-  private stopGame(): void {
-    this.preparingLevel = true;
+    this.nameError = '';
     this.gameInProgress = false;
+    this.gameOver = true;
+    // If the current game score beats the highscore, update it in the view.
+    if (this.score > this.highScore) {
+      this.highScore = this.score;
+    }
   }
 
+  /**
+   * Pauses the game. Useful for if the user tries to navigate away. We can set
+   * a route guard to ask them to confirm if they want to leave or not.
+   *
+   * @param {Event} e
+   * @memberof PlayComponent
+   */
+  pauseGame(e: Event): void {
+    this.pause = !this.pause;
+    this.cdr.detectChanges();
+  }
+
+  /**
+   * Exit the game back to the home page of the app
+   *
+   * @memberof PlayComponent
+   */
   exitGame(): void {
     this.router.navigate(['/']);
   }
 
-  restartGame(): void {
-    this.initLevel(0);
+  /**
+   * Re-initialises the game
+   *
+   * @memberof PlayComponent
+   */
+  async restartGame(): Promise<void> {
+    if (this.score) {
+      if (this.validateName()) {
+        const rec: IPlayerRecord = {
+          score: this.score,
+          name: this.name.nativeElement.value
+        };
+        await this.playSrv.setHighScore(rec);
+        this.initGame();
+        return;
+      }
+    }
+    this.initGame();
+    return;
+  }
+
+  validateName(): boolean {
+    const name = this.name.nativeElement.value;
+    if (name.length < 3) {
+      this.nameError = 'Name is not valid. Please set a value of 3 characters';
+      return false;
+    }
+    return true;
   }
 }

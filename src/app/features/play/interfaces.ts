@@ -1,4 +1,4 @@
-export interface IMoleSettings {
-  speed: string;
-  delay: string;
+export interface IPlayerRecord {
+  name: string;
+  score: number;
 }

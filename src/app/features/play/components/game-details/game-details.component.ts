@@ -1,7 +1,8 @@
 import {
   Component, OnInit, OnDestroy, ChangeDetectionStrategy, ChangeDetectorRef,
-  Input, OnChanges, SimpleChanges, EventEmitter, Output
+  Input, OnChanges, SimpleChanges
 } from '@angular/core';
+import { PlayService } from '@features/play/services/play.service';
 
 @Component({
   selector: 'app-game-details',
@@ -13,11 +14,11 @@ export class GameDetailsComponent implements OnInit, OnDestroy, OnChanges {
   @Input() score = 0;
   @Input() time = 0;
   @Input() level = 0;
+  @Input() highScore = 0;
 
-  constructor(private cdr: ChangeDetectorRef) { }
+  constructor() { }
 
   ngOnInit(): void {
-
   }
 
   ngOnDestroy(): void {

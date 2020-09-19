@@ -5,7 +5,6 @@
   left: 50%;
   transform: translateX(-50%);
   bottom: -100%;
-  will-change: bottom, animation-duration, animation-delay;
   background-color: yellow;
 
   &:hover {
@@ -16,7 +15,18 @@
     animation-name: moveUpDown;
     animation-duration: 7s;
     animation-timing-function: linear;
-    animation-iteration-count: infinite;
+  }
+}
+
+.hole {
+  background-color: black;
+  overflow: hidden;
+  position: relative;
+
+  &:after {
+    padding-bottom: 100%;
+    content: '';
+    display: block;
   }
 }
 
