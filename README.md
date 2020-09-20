@@ -1,5 +1,7 @@
 # I Can Angular
 
+![I Can Angular Logo](https://i.imgur.com/wWETcnB.png)
+
 ## Introduction
 
 The purpose of this repo is to demonstrate some Angular best practices. There's also some other cool stuff included. This repo is currently a __work in progress!__. I still need to refactor some of the code, and implement more examples.
