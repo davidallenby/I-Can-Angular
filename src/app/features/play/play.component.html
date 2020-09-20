@@ -1,29 +1,27 @@
-<div class="container">
-  <app-game-details 
-  [score]="score"
-  [gameInProgress]="gameInProgress"
-  [pause]="pause"
-  (gameOver)="endGame($event)"
-  (timeChange)="onTimeChange($event)"
-  ></app-game-details>
+<app-game-details 
+[score]="score"
+[gameInProgress]="gameInProgress"
+[pause]="pause"
+(gameOver)="endGame($event)"
+(timeChange)="onTimeChange($event)"
+></app-game-details>
 
-  <div class="game-wrapper position-relative">
+<div class="game-wrapper position-relative">
 
-    <div class="text-center level-info d-flex flex-column h-100 flex-grow-1 p-5 position-absolute align-items-center h-100 w-100 justify-content-center" *ngIf="preparingLevel">
-      <p class="display-2">{{userMessage}}</p>
-    </div>
-
-    <app-game-over
-      *ngIf="gameOver"
-      [score]="score"
-      (restartGame)="restartGame($event)"
-    ></app-game-over>
-
-    <app-game-board 
-      [time]="timeLeft" 
-      [gameInProgress]="gameInProgress"
-      [pause]="pause"
-      (scoreChange)="onClick($event)"
-    ></app-game-board>
+  <div class="text-center level-info d-flex flex-column h-100 flex-grow-1 p-5 position-absolute align-items-center h-100 w-100 justify-content-center" *ngIf="preparingLevel">
+    <p class="display-2">{{userMessage}}</p>
   </div>
+
+  <app-game-over
+    *ngIf="gameOver"
+    [score]="score"
+    (restartGame)="restartGame($event)"
+  ></app-game-over>
+
+  <app-game-board 
+    [time]="timeLeft" 
+    [gameInProgress]="gameInProgress"
+    [pause]="pause"
+    (scoreChange)="onClick($event)"
+  ></app-game-board>
 </div>

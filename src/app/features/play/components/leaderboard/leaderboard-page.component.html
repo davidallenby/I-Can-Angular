@@ -1,28 +1,26 @@
-<div class="container">
-  <h1>Whac-A-Mole leaderboard</h1>
-  <div *ngIf="loading">
-    <!-- TODO: Insert loading spinner here-->
-  </div>
-  <div *ngIf="!loading">
-    <table class="table">
-      <thead>
-        <th>Name</th>
-        <th>Score</th>
-      </thead>
-      <tbody *ngIf="scores.length">
-        <tr *ngFor="let record of scores">
-          <td>{{record.name}}</td>
-          <td>{{record.score}}</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <!-- Displays an empty state if no scores are returned... -->
-        <tr *ngIf="!scores.length">
-          <td colspan="2">
-            There are currently no scores available. <a routerLink="/play">Have a go</a> at the game to save some scores.
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+<h1>Whac-A-Mole leaderboard</h1>
+<div *ngIf="loading">
+  <!-- TODO: Insert loading spinner here-->
+</div>
+<div *ngIf="!loading">
+  <table class="table">
+    <thead>
+      <th>Name</th>
+      <th>Score</th>
+    </thead>
+    <tbody *ngIf="scores.length">
+      <tr *ngFor="let record of scores">
+        <td>{{record.name}}</td>
+        <td>{{record.score}}</td>
+      </tr>
+    </tbody>
+    <tbody>
+      <!-- Displays an empty state if no scores are returned... -->
+      <tr *ngIf="!scores.length">
+        <td colspan="2">
+          There are currently no scores available. <a routerLink="/play">Have a go</a> at the game to save some scores.
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>

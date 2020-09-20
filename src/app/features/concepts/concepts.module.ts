@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '@shared/shared.module';
 import { ConceptsComponent } from './concepts.component';
+import { AngularServicesComponent } from './components/angular-services/angular-services.component';
+import {AngularServicesService} from './components/angular-services/services/angular-services.service';
 
 @NgModule({
   imports: [
@@ -22,18 +24,22 @@ import { ConceptsComponent } from './concepts.component';
         path: 'modules',
         component: ConceptsComponent
       },
-      { // TODO: Update component
+      {
         path: 'services',
-        component: ConceptsComponent
+        component: AngularServicesComponent
       }
     ])
   ],
   declarations: [
-    ConceptsComponent
+    ConceptsComponent,
+    AngularServicesComponent
   ],
   exports: [
-    ConceptsComponent
+    ConceptsComponent,
+    AngularServicesComponent
   ],
-  providers: []
+  providers: [
+    AngularServicesService
+  ]
 })
 export class ConceptsModule { }

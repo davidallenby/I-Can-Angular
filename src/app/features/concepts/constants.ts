@@ -1,11 +1,11 @@
 export const ANGULAR_CONCEPTS = [
   {
     text: 'Components',
-    url: 'concepts/components'
+    // url: 'concepts/components'
   },
   {
     text: 'Modules',
-    url: 'concepts/modules'
+    // url: 'concepts/modules'
   },
   {
     text: 'Services',
