@@ -4,6 +4,10 @@
 <ul>
   <li *ngFor="let item of items">
     <span *ngIf="!item.url">{{item.text}}</span>
-    <a *ngIf="item.url" [href]="item.url">{{item.text}}</a>
+    <a *ngIf="item.url && item.external" [href]="item.url">{{item.text}}</a>
+    <!-- In-app links -->
+    <a *ngIf="(item.url && !item.external)" [routerLink]="item.url">
+      {{item.text}}
+    </a>
   </li>
 </ul>

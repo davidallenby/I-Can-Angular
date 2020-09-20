@@ -1,6 +1,7 @@
 <h1>Angular Services</h1>
 <p>I will update this later with an explanation around what Angular Services are, what they do, and how best to use them.<br/>For now, click the button to request a programming quote.</p>
-<button class="btn btn-primary btn-lg mb-5" (click)="onQuoteRequest($event)">
+<button class="btn btn-primary btn-lg mb-5" (click)="onQuoteRequest($event)"
+[disabled]="loadingQuote">
   <span *ngIf="!loadingQuote">Get a quote!</span>
   <span *ngIf="loadingQuote">Loading quote</span>
 </button>

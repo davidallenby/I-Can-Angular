@@ -6,4 +6,5 @@ export interface IListData {
 export interface IListItem {
   text: string;
   url?: string;
+  external?: boolean;
 }
