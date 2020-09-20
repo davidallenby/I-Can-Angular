@@ -29,6 +29,9 @@ export class MoleComponent implements OnDestroy, OnChanges {
     private playSrv: PlayService
   ) { }
 
+  // TODO: Eventually, I'd like to integrate a function that randomly generate's
+  // an image/character for the mole OnInit...
+
   ngOnDestroy(): void {
     this.destroy = true;
     this.removeAnimation();
@@ -171,6 +174,7 @@ export class MoleComponent implements OnDestroy, OnChanges {
   }
 
   /**
+   * TODO: Regenerate the mole's image/character
    * Fired when the user successfully whack's a mole
    *
    */

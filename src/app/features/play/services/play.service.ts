@@ -5,23 +5,9 @@ import { IPlayerRecord } from '../interfaces';
   providedIn: 'root'
 })
 export class PlayService {
+  time = 60;
 
   constructor() { }
-  /**
-   * TODO: Update types, create interfaces for mole/moles/schema
-   *
-   * @param {*} schema
-   * @memberof PlayService
-   */
-  generateMoles(): any {
-    const moles = [];
-
-    for (let i = 0; i < 6; i++) {
-      const mole = {};
-      moles.push(mole);
-    }
-    return moles;
-  }
 
   /**
    * Get a random number between a range
@@ -106,7 +92,7 @@ export class PlayService {
    */
   async getHighestScore(): Promise<number> {
     const scores = await this.getScores();
-    return scores[0].score;
+    return (scores.length) ? scores[0].score : 0;
   }
 
 }

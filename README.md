@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The purpose of this repo is to demonstrate some Angular best practices. There's also some other cool stuff included.
+The purpose of this repo is to demonstrate some Angular best practices. There's also some other cool stuff included. This repo is currently a __work in progress!__. I still need to refactor some of the code, and implement more examples.
 
 ## Contents
 
@@ -23,12 +23,12 @@ The purpose of this repo is to demonstrate some Angular best practices. There's 
 * To run in dev mode: `ng serve`
 
 ## Testing
-This is still a work in progress. However, you can use the following commands:
+This is still a work in progress...
 * Unit tests `ng test`
 * e2e tests `ng e2e`
 
 ## Best practices
-I have implemented the following best practices:
+I have implemented the following best practices while creating this repo:
 
 __Coding style__
 * Code should not exceed around 30 lines per function. (KISS - Keep it simple, stupid!)

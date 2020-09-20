@@ -2,6 +2,7 @@
   animation: wave 2s ease-in-out infinite;
   animation-delay: 2s;
   transform: rotate(0deg);
+  will-change: transform;
 }
 
 @keyframes wave {

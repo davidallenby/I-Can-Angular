@@ -6,6 +6,7 @@
   transform: translateX(-50%);
   bottom: -100%;
   background-color: yellow;
+  will-change: transform, bottom; // Helps with CPU usage - DA
 
   &:hover {
     cursor: pointer;

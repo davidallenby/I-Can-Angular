@@ -9,7 +9,6 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PlayComponent implements OnInit, OnDestroy {
-  // TODO: Add types
   userMessage = '';
   preparingLevel = true;
   gameInProgress = false;
