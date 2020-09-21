@@ -19,8 +19,8 @@ The purpose of this repo is to demonstrate some Angular best practices. There's 
 * This project was built with Angular CLI `npm i -g @angular/cli`
 
 ### Install
-* Clone the repo to your local: `git clone https://github.com/davidallenby/i-can-angular.git`
-* Go to the directory: `cd i-can-angular`
+* Clone the repo to your local: `git clone https://github.com/davidallenby/I-Can-Angular.git`
+* Go to the directory: `cd I-Can-Angular`
 * Install dependencies: `npm install`
 * To run in dev mode: `ng serve`
 
