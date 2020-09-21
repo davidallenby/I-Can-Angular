@@ -80,7 +80,9 @@ export class PlayService {
       .sort((a: IPlayerRecord, b: IPlayerRecord) => {
         return b.score - a.score;
       });
-      resolve(results);
+
+      // Simulate an API request
+      setTimeout(() => resolve(results), 2000);
     });
   }
 

@@ -1,7 +1,9 @@
 <div class="py-3 d-flex align-items-start">
   <div>
     Your score: {{score}}<br/>
-    High score: {{highScore}}
+    High score: 
+    <span *ngIf="!loadingHighScore">{{highScore}}</span>
+    <span *ngIf="loadingHighScore" class="icon-spinner spin"></span>
   </div>
   <div class="ml-auto text-right">
     Time left: {{time}}<br/>

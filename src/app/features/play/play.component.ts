@@ -1,13 +1,22 @@
 import {
   Component, OnInit, OnDestroy, ChangeDetectionStrategy, ChangeDetectorRef
 } from '@angular/core';
-
+/**
+ * TODO: Refactor how the timer works. Use an observable and have the moles
+ * subscribe to the changes.
+ *
+ * @export
+ * @class PlayComponent
+ * @implements {OnInit}
+ * @implements {OnDestroy}
+ */
 @Component({
   selector: 'app-play',
   templateUrl: './play.component.html',
   styleUrls: ['./play.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
+
 export class PlayComponent implements OnInit, OnDestroy {
   userMessage = '';
   preparingLevel = true;
@@ -29,6 +38,12 @@ export class PlayComponent implements OnInit, OnDestroy {
     this.destroy = true;
   }
 
+  /**
+   * Captures the click event on each mole
+   *
+   * @param {Event} e
+   * @memberof PlayComponent
+   */
   onClick(e: Event): void {
     this.score++;
   }

@@ -25,6 +25,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-spinner9:before {
+.icon-spinner:before {
   content: "\e982";
 }

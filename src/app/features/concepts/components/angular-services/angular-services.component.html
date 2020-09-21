@@ -9,3 +9,9 @@
   <p>{{quote.en}}</p>
   <small>{{quote.author}}</small>
 </blockquote>
+<p *ngIf="quoteError$ | async as quoteError" class="text-danger">
+  <small>
+    There was an error requesting your quote:<br/>
+    {{quoteError.message}}
+  </small>
+</p>
