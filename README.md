@@ -53,4 +53,6 @@ __Angular best practices__
   - Dumb components: These are presentational only and will be used to display data. We will delegate user interaction up to smart components via events.
 * "On push" Change Detection Strategy - This will improve performance of the application, as it will only update components when necessary.
 * Import aliases - Shortened aliases for Core, Features, and Shared modules.
+* The Async Pipe - I've used the Async Pipe in the templates. This is because it automatically subscribes, and unsubscribes from observables. This is so you don't have to manually write all the OnDestroy code to unsubscribe!
+* Place all global styles into /src/styles. Update your angular.json file to add a stylePreprocessorOptions option. This allows you to do short import statements, like: @import "variables";
 
