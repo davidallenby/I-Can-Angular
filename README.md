@@ -1,6 +1,6 @@
-# I Can Angular
+# Whac-A-Mole
 
-![I Can Angular Logo](https://i.imgur.com/wWETcnB.png)
+![Whac-A-Mole Logo](https://i.imgur.com/wWETcnB.png)
 
 ## Introduction
 
@@ -19,8 +19,8 @@ The purpose of this repo is to demonstrate some Angular best practices. There's 
 * This project was built with Angular CLI `npm i -g @angular/cli`
 
 ### Install
-* Clone the repo to your local: `git clone https://github.com/davidallenby/i-can-angular.git`
-* Go to the directory: `cd i-can-angular`
+* Clone the repo to your local: `git clone https://github.com/davidallenby/whac-a-mole.git`
+* Go to the directory: `cd whac-a-mole`
 * Install dependencies: `npm install`
 * To run in dev mode: `ng serve`
 
@@ -42,7 +42,7 @@ __Coding style__
 * Use `const` when the variable won't change, `let` when it does.
 
 __Angular best practices__
-* Use reusable components (e.g [ListComponent](https://github.com/davidallenby/i-can-angular/tree/code-cleanup/src/app/shared/components/list))
+* Use reusable components (e.g [ListComponent](https://github.com/davidallenby/whac-a-mole/tree/code-cleanup/src/app/shared/components/list))
 * Lazy loading routes (reduces the size of the application, the initial load time, and improve the application boot time by not loading the unused modules.)
 * Modular design: Apps should be structured with 1 x Core Module, 1 x Shared Module, and many Feature Modules
   - Core Module: This will be where any singleton services or site-wide components will be kept (E.g. header, footer)
