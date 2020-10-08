@@ -1,10 +1,8 @@
 # Whac-A-Mole
 
-![Whac-A-Mole Logo](https://i.imgur.com/wWETcnB.png)
-
 ## Introduction
 
-The purpose of this repo is to demonstrate some Angular best practices. There's also some other cool stuff included. This repo is currently a __work in progress!__ I still need to refactor some of the code, and implement more examples.
+The purpose of this repo is to demonstrate some Angular best practices. I decided that the best way to do this would be to build something fun. Whac-A-Mole provided a good opportunity to challenge my skillset, while also building something that people might use in future. I could also cover most Angular concepts and display best practices.
 
 ## Contents
 
