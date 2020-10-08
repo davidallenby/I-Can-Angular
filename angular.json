@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "i-can-angular": {
+    "whac-a-mole": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/i-can-angular",
+            "outputPath": "dist/whac-a-mole",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -74,18 +74,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "i-can-angular:build"
+            "browserTarget": "whac-a-mole:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "i-can-angular:build:production"
+              "browserTarget": "whac-a-mole:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "i-can-angular:build"
+            "browserTarget": "whac-a-mole:build"
           }
         },
         "test": {
@@ -125,15 +125,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "i-can-angular:serve"
+            "devServerTarget": "whac-a-mole:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "i-can-angular:serve:production"
+              "devServerTarget": "whac-a-mole:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "i-can-angular"
+  "defaultProject": "whac-a-mole"
 }

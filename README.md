@@ -1,10 +1,8 @@
-# I Can Angular
-
-![I Can Angular Logo](https://i.imgur.com/wWETcnB.png)
+# Whac-A-Mole
 
 ## Introduction
 
-The purpose of this repo is to demonstrate some Angular best practices. There's also some other cool stuff included. This repo is currently a __work in progress!__ I still need to refactor some of the code, and implement more examples.
+The purpose of this repo is to demonstrate some Angular best practices. I decided that the best way to do this would be to build something fun. Whac-A-Mole provided a good opportunity to challenge my skillset, while also building something that people might use in future. I could also cover most Angular concepts and display best practices.
 
 ## Contents
 
@@ -19,8 +17,8 @@ The purpose of this repo is to demonstrate some Angular best practices. There's 
 * This project was built with Angular CLI `npm i -g @angular/cli`
 
 ### Install
-* Clone the repo to your local: `git clone https://github.com/davidallenby/I-Can-Angular.git`
-* Go to the directory: `cd I-Can-Angular`
+* Clone the repo to your local: `git clone https://github.com/davidallenby/whac-a-mole.git`
+* Go to the directory: `cd whac-a-mole`
 * Install dependencies: `npm install`
 * To run in dev mode: `ng serve`
 
@@ -42,7 +40,7 @@ __Coding style__
 * Use `const` when the variable won't change, `let` when it does.
 
 __Angular best practices__
-* Use reusable components (e.g [ListComponent](https://github.com/davidallenby/i-can-angular/tree/code-cleanup/src/app/shared/components/list))
+* Use reusable components (e.g [ListComponent](https://github.com/davidallenby/whac-a-mole/tree/code-cleanup/src/app/shared/components/list))
 * Lazy loading routes (reduces the size of the application, the initial load time, and improve the application boot time by not loading the unused modules.)
 * Modular design: Apps should be structured with 1 x Core Module, 1 x Shared Module, and many Feature Modules
   - Core Module: This will be where any singleton services or site-wide components will be kept (E.g. header, footer)
@@ -53,4 +51,6 @@ __Angular best practices__
   - Dumb components: These are presentational only and will be used to display data. We will delegate user interaction up to smart components via events.
 * "On push" Change Detection Strategy - This will improve performance of the application, as it will only update components when necessary.
 * Import aliases - Shortened aliases for Core, Features, and Shared modules.
+* The Async Pipe - I've used the Async Pipe in the templates. This is because it automatically subscribes, and unsubscribes from observables. This is so you don't have to manually write all the OnDestroy code to unsubscribe!
+* Place all global styles into /src/styles. Update your angular.json file to add a stylePreprocessorOptions option. This allows you to do short import statements, like: @import "variables";
 
