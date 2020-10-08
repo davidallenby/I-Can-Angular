@@ -16,12 +16,6 @@ const routes: Routes = [
       return m.PlayModule;
     })
   },
-  {
-    path: 'concepts',
-    loadChildren: () => import('@features/concepts/concepts.module').then(m => {
-      return m.ConceptsModule;
-    })
-  }
 ];
 
 @NgModule({
